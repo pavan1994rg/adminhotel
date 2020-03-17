@@ -32,7 +32,8 @@ class ProductUpdate extends React.Component{
         product_name:event.target.elements.formBasicproductname.value,
         product_quantity:event.target.elements.formBasicproductquantity.value,
         product_price:event.target.elements.formBasicproductprice.value,
-        product_category:event.target.elements.formBasiccategory.value
+        product_category:event.target.elements.formBasiccategory.value,
+        selling_price : event.target.elements.formBasicSellingprice.value
     
    }
    this.api.updateProduts(product).then(result=>{
@@ -166,6 +167,10 @@ class ProductUpdate extends React.Component{
                     <Form.Group controlId="formBasicproductprice">
                      <Form.Label>Product Price</Form.Label>
                         <Form.Control type="number" placeholder="Enter product price" defaultValue={product.product_price}  required/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicSellingprice">
+                     <Form.Label>Selling Price</Form.Label>
+                        <Form.Control type="number" placeholder="Enter selling price" defaultValue={product.selling_price} />
                     </Form.Group>
                     <Form.Group controlId="formBasicproductquantity">
                      <Form.Label>Product Quantity</Form.Label>

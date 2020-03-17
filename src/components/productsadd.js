@@ -21,7 +21,8 @@ class ProductAdd extends React.Component{
         product_quantity:event.target.elements.formBasicproductquantity.value,
         product_price:event.target.elements.formBasicproductprice.value,
         product_category:event.target.elements.formBasiccategory.value,
-        product_image:this.props.img
+        product_image:this.props.img,
+        selling_price:0
 
     }
     let product_array = [];
