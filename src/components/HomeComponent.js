@@ -6,6 +6,7 @@ import ProductAdd from './productsadd';
 import ProductUpdate from './productslist';
 import '../App.css'
 import ApiServices from '../Services/api_services' 
+import  CategoryAdd     from './putCategory'
 class HomeComponent extends React.Component{
 
   constructor(){
@@ -33,6 +34,9 @@ class HomeComponent extends React.Component{
     return(
       <div >
           <Container>
+            <Row>
+            <CategoryAdd/>
+            </Row>
             <Row>
               <Col xs={12} sm={12} md ={4}>
                 <FileUpload />

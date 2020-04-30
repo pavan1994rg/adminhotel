@@ -3,6 +3,7 @@ import  {render} from 'react-dom';
 import {Card,Button,Form}  from 'react-bootstrap';
 import {connect} from 'react-redux';
 import  ApiServices from '../Services/api_services'
+import config from  '../config'
 
 
 class ProductAdd extends React.Component{
@@ -11,6 +12,7 @@ class ProductAdd extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     api = new ApiServices()
+     restid = new config()
    handleSubmit(event){
     event.preventDefault()
     console.log(event.target.elements.formBasicproductname.value)
@@ -22,7 +24,8 @@ class ProductAdd extends React.Component{
         product_price:event.target.elements.formBasicproductprice.value,
         product_category:event.target.elements.formBasiccategory.value,
         product_image:this.props.img,
-        selling_price:0
+        selling_price:0,
+        restaurant_id: this.restid.restuarant_id
 
     }
     let product_array = [];
@@ -73,7 +76,7 @@ class ProductAdd extends React.Component{
                         {
                                 (this.state.categories.categories != undefined && this.state.categories.categories.length > 0) ? 
                              this.state.categories.categories.map((category,index)=>{
-                                       return( <option key={index} value={category.cateId}>
+                                       return( <option key={index} value={category.catId}>
                                           {category.category_name}
                                        </option>)
                                     })

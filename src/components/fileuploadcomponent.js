@@ -61,10 +61,11 @@ const mapStateToProps = state => {
         ctr: state.counter
     };
 };
+const apiUrl = new ApiServices();
 
 const mapDispatchToProps = dispatch => {
     return {
-        onImageUpdate: () => dispatch({type: 'IMAGEUPDATE',value:'http://localhost:3002/?url='+image})
+        onImageUpdate: () => dispatch({type: 'IMAGEUPDATE',value:apiUrl.URL+'?url='+image})
     };
 };
 export default connect(mapStateToProps,mapDispatchToProps)(FileUpload);

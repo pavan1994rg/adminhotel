@@ -33,7 +33,7 @@ class ProductUpdate extends React.Component{
         product_quantity:event.target.elements.formBasicproductquantity.value,
         product_price:event.target.elements.formBasicproductprice.value,
         product_category:event.target.elements.formBasiccategory.value,
-        selling_price : event.target.elements.formBasicSellingprice.value
+        
     
    }
    this.api.updateProduts(product).then(result=>{
@@ -93,6 +93,11 @@ class ProductUpdate extends React.Component{
 
     this.api.viewProducts().then(result=>{
         console.log(result);
+        result.data.forEach((res)=>{
+            if(!res.product_image.includes('?')){
+                res.product_image = this.api.URL+'?url='+res.product_image;
+            }
+        })
         this.setState({
             "products":result.data,
             'showProducts':false
@@ -154,7 +159,7 @@ class ProductUpdate extends React.Component{
                         {
                                 (this.state.categories.categories != undefined && this.state.categories.categories.length > 0) ? 
                              this.state.categories.categories.map((category,index)=>{
-                                       return( <option key={index} value={category.cateId}>
+                                       return( <option key={index} value={category.catId}>
                                           {category.category_name}
                                        </option>)
                                     })
@@ -168,10 +173,7 @@ class ProductUpdate extends React.Component{
                      <Form.Label>Product Price</Form.Label>
                         <Form.Control type="number" placeholder="Enter product price" defaultValue={product.product_price}  required/>
                     </Form.Group>
-                    <Form.Group controlId="formBasicSellingprice">
-                     <Form.Label>Selling Price</Form.Label>
-                        <Form.Control type="number" placeholder="Enter selling price" defaultValue={product.selling_price} />
-                    </Form.Group>
+                    
                     <Form.Group controlId="formBasicproductquantity">
                      <Form.Label>Product Quantity</Form.Label>
                         <Form.Control type="text" placeholder="Enter product quantity" defaultValue={product.product_quantity} required />

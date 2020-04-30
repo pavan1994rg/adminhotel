@@ -25,6 +25,12 @@ putProducts(products){
   return axios.post(this.URL+'putProducts', data)
 }
 
+putCategory(category){
+  const data ={
+    "category":JSON.stringify(category)
+  }  
+return axios.post(this.URL+'putCategories', data)
+}
 viewProducts(){
   return axios.get(this.URL+"getProducts");
 }
